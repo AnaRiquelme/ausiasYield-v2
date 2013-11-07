@@ -38,16 +38,16 @@
     }
 %>
 <h1><%=strTitulo%> de cliente</h1>
-<form class="semantic" action="Controller" method="post" id="clienteForm">
+<form class="semantic" action="Controller" method="post" id="repositorioForm">
     <fieldset>
         <legend>Formulario de Repositorio</legend>
         <input type="hidden" name="id" value="<%=id%>" /> 
-        <input type="hidden" name="class" value="cliente" /> 
+        <input type="hidden" name="class" value="repositorio" /> 
         <input type="hidden" name="method" value="<%=oContexto.getMetodo()%>" /> 
         <input type="hidden" name="phase" value="2" />
         <div>
-            <label for="nombre">Titulo: </label> 
-            <input <%=strControlEnabled%> id="nombre" name="nombre" type="text" size="30" maxlength="50" autofocus="autofocus" value="<%=titulo%>" /><br />
+            <label for="titulo">Titulo: </label> 
+            <input <%=strControlEnabled%> id="titulo" name="titulo" type="text" size="30" maxlength="50" autofocus="autofocus" value="<%=titulo%>" /><br />
         </div>
         <div>
             <label for="ape1">Contenido: </label>

@@ -17,8 +17,9 @@ public class RepositorioNew1 implements Operation{
     @Override
     public Object execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Contexto oContexto = (Contexto) request.getAttribute("contexto");
-        oContexto.setVista("jsp/repositorio/form.jsp");        
+        oContexto.setVista("jsp/repositorio/form.jsp");   
+     System.out.println("pasas o no?");  
         return null;
     }
-    
+     
 }

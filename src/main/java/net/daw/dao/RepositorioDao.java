@@ -37,6 +37,7 @@ public class RepositorioDao {
      */
     public RepositorioBean get(RepositorioBean oRepositorioBean) throws Exception {
         try {
+            System.out.println("Pasas por aqui get?");
             oMysql.conexion(enumTipoConexion);
             oRepositorioBean.setTitulo(oMysql.getOne("repositorio", "titulo", oRepositorioBean.getId()));
             oRepositorioBean.setContenido(oMysql.getOne("repositorio", "contenido", oRepositorioBean.getId()));
@@ -56,16 +57,17 @@ public class RepositorioDao {
     
     public void set(RepositorioBean oRepositorioBean) throws Exception {
         try {
+            System.out.println("Pasas por aqui?");
             oMysql.conexion(enumTipoConexion);
             oMysql.initTrans();
             if (oRepositorioBean.getId() == 0) {
                 oRepositorioBean.setId(oMysql.insertOne("repositorio"));
             }
-            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "Título", oRepositorioBean.getTitulo());
-            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "Contenido", oRepositorioBean.getContenido());
-            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "Id_usuario", Integer.toString(oRepositorioBean.getId_usuario()));
-            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "Id_lenguaje", Integer.toString(oRepositorioBean.getId_lenguaje()));
-            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "Id_documento", Integer.toString(oRepositorioBean.getId_documento()));
+            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "titulo", oRepositorioBean.getTitulo());
+            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "contenido", oRepositorioBean.getContenido());
+            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "id_usuario", Integer.toString(oRepositorioBean.getId_usuario()));
+            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "id_lenguaje", Integer.toString(oRepositorioBean.getId_lenguaje()));
+            oMysql.updateOne(oRepositorioBean.getId(), "repositorio", "id_documento", Integer.toString(oRepositorioBean.getId_documento()));
             oMysql.commitTrans();
         } catch (Exception e) {
             oMysql.rollbackTrans();

@@ -40,7 +40,7 @@ public class RepositorioUpdate1 implements Operation {
         try {
             oRepositorioBean = oRepositorioDao.get(oRepositorioBean);
         } catch (Exception e) {
-            throw new ServletException("ClienteController: Update Error: Phase 1: " + e.getMessage());
+            throw new ServletException("RepositorioController: Update Error: Phase 1: " + e.getMessage());
         }
         oRepositorioBean = oClienteParam.load(oRepositorioBean);
         return oRepositorioBean;

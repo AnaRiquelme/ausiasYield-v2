@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.daw.bean.RepositorioBean;
+import net.daw.dao.RepositorioDao;
 import net.daw.helper.Contexto;
+import net.daw.parameter.RepositorioParam;
 
 /**
  *
@@ -21,20 +23,20 @@ public class RepositorioNew2 implements Operation {
         Contexto oContexto = (Contexto) request.getAttribute("contexto");
         oContexto.setVista("jsp/mensaje.jsp");
         RepositorioBean oRepositorioBean = new RepositorioBean();
-        ClienteDao oClienteDao = new ClienteDao(oContexto.getEnumTipoConexion());
-        ClienteParam oClienteParam = new ClienteParam(request);
-        oClienteBean = oClienteParam.loadId(oClienteBean);
+        RepositorioDao oRepositorioDao = new RepositorioDao(oContexto.getEnumTipoConexion());
+        RepositorioParam oRepositorioParam = new RepositorioParam(request);
+        oRepositorioBean = oRepositorioParam.loadId(oRepositorioBean);
         try {
-            oClienteBean = oClienteParam.load(oClienteBean);
+            oRepositorioBean = oRepositorioParam.load(oRepositorioBean);
         } catch (NumberFormatException e) {
             return "Tipo de dato incorrecto en uno de los campos del formulario";
         }
         try {
-            oClienteDao.set(oClienteBean);
+            oRepositorioDao.set(oRepositorioBean);
         } catch (Exception e) {
-            throw new ServletException("ClienteController: Update Error: Phase 2: " + e.getMessage());
+            throw new ServletException("RepositorioController: Update Error: Phase 2: " + e.getMessage());
         }
-        return "Se ha añadido la información del cliente con id=" + Integer.toString(oClienteBean.getId());
+        return "Se ha añadido la información del repositorio con id=" + Integer.toString(oRepositorioBean.getId());
     }
     
 }
